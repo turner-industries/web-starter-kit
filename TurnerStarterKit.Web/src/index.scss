@@ -1,0 +1,108 @@
+@import 'src/variables';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #e0e1e2;
+}
+
+.ui {
+  &.form {
+    margin-bottom: 15px;
+
+    input {
+      &:not([type]),
+      &[type="date"],
+      &[type="datetime-local"],
+      &[type="email"],
+      &[type="number"],
+      &[type="password"],
+      &[type="search"],
+      &[type="tel"],
+      &[type="time"],
+      &[type="text"],
+      &[type="file"],
+      &[type="url"] {
+        border-width: 2px;
+      }
+    }
+  }
+
+  &.menu  {
+    &.main-header {
+      border-radius: 0;
+      border-bottom: solid 5px $brand-primary;
+    }
+
+    .main-header-title {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+  }
+
+  &.container {
+    &.page-content {
+      @include content-base();
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    &.card-content {
+      @include content-base();
+    }
+  }
+
+  &.header.page-header {
+    color: $brand-primary;
+    /* #5f6968; */
+    margin-bottom: 15px;
+  }
+
+  &.breadcrumb a {
+    color: $brand-primary;
+  }
+
+  &.table {
+    &.table tr th {
+      border-left: 1px solid rgba(222, 222, 222, 0.43);
+    }
+
+    thead th {
+      background: lighten($black, 25) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+      background: lighten($black, 25) -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+      background: lighten($black, 25) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+      color: #FFF;
+    }
+  }
+}
+
+.card-wrapper {
+  padding: 0 20px;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.meta-content-container {
+  margin-bottom: 5px;
+  position: absolute;
+  top: -35px;
+  left: 0px;
+  right: 0px;
+}
+
+.field-errors {
+  color: #9F3A38;
+}
