@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnerStarterKit.API", "TurnerStartKit.API\TurnerStarterKit.API.csproj", "{C7A970C8-C1FF-4A38-A2F9-E7785B0C4422}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnerStarterKit.API", "TurnerStarterKit.API\TurnerStarterKit.API.csproj", "{C7A970C8-C1FF-4A38-A2F9-E7785B0C4422}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnerStarterKit.Core", "TurnerStarterKit.Core\TurnerStarterKit.Core.csproj", "{C4B40EA4-46B4-4A74-A45D-1A8E5AAC5ED1}"
 EndProject

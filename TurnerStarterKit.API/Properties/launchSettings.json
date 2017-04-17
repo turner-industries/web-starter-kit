@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TurnerStartKit.API": {
+    "TurnerStarterKit.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
