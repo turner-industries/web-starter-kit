@@ -18,25 +18,27 @@ const UserForm = ({user = {}, errors = {}, children, onSubmit, onChange}) => {
         />
       </ErrorAwareField>
 
-      <ErrorAwareField errors={errors.firstName}>
-        <label>First Name</label>
-        <Input
-          name="firstName"
-          type="text"
-          value={firstName}
-          onChange={onChange}
-        />
-      </ErrorAwareField>
+      <Form.Group widths="equal">
+        <ErrorAwareField errors={errors.firstName}>
+          <label>First Name</label>
+          <Input
+            name="firstName"
+            type="text"
+            value={firstName}
+            onChange={onChange}
+          />
+        </ErrorAwareField>
 
-      <ErrorAwareField errors={errors.lastName}>
-        <label>Last Name</label>
-        <Input
-          name="lastName"
-          type="text"
-          value={lastName}
-          onChange={onChange}
-        />
-      </ErrorAwareField>
+        <ErrorAwareField errors={errors.lastName}>
+          <label>Last Name</label>
+          <Input
+            name="lastName"
+            type="text"
+            value={lastName}
+            onChange={onChange}
+          />
+        </ErrorAwareField>
+      </Form.Group>
 
       <Form.Field>
         <Checkbox

@@ -2,10 +2,10 @@
 import {createElement} from 'react';
 import {Form} from 'semantic-ui-react';
 
-const ErrorAwareField = ({errors = [], children}) => {
+const ErrorAwareField = ({errors = [], children, ...rest}) => {
   const showErrors = errors.length > 0;
   return (
-    <Form.Field error={showErrors}>
+    <Form.Field error={showErrors} {...rest}>
       {children}
       {showErrors &&
         <ul className="field-errors">
