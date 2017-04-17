@@ -1,22 +1,21 @@
 import validate from 'validate.js';
 import upperFirst from 'lodash/upperFirst';
 
-const serverFormat = (errors) => errors.map((validationError) => ({
-  propertyName: upperFirst(validationError.attribute),
-  errorMessage: validationError.error,
-}));
+const serverFormat = errors =>
+  errors.map(validationError => ({
+    propertyName: upperFirst(validationError.attribute),
+    errorMessage: validationError.error,
+  }));
 
-const objectMap = (errors) => errors.reduce(
-  (acc, validationError) => {
+const objectMap = errors =>
+  errors.reduce((acc, validationError) => {
     acc[validationError.attribute] = acc[validationError.attribute] || [];
     acc[validationError.attribute].push(validationError.error);
     return acc;
-  },
-  {}
-);
+  }, {});
 
 export const length = (minimum, maximum) => ({
-  length: { minimum, maximum },
+  length: {minimum, maximum},
 });
 
 validate.formatters.serverFormat = serverFormat;

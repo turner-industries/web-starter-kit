@@ -1,6 +1,6 @@
 /** @jsx createElement */
-import { createElement } from "react";
-import { Route, Switch } from 'react-router-dom';
+import {createElement} from 'react';
+import {Route, Switch} from 'react-router-dom';
 
 import PrivateRoute from 'features/security/PrivateRoute';
 import UsersIndex from 'features/users/UsersIndex';
@@ -9,10 +9,7 @@ import UserEdit from 'features/users/UserEdit';
 
 const UserRoutes = ({match}) => (
   <Switch>
-    <Route exact
-      path={match.path}
-      component={UsersIndex}
-    />
+    <Route exact path={match.path} component={UsersIndex} />
     <PrivateRoute
       claim="users/modify"
       path={`${match.path}/add`}

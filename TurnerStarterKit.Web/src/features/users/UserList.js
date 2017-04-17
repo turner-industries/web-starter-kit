@@ -1,12 +1,11 @@
 /** @jsx createElement */
-import { createElement, Component } from "react";
-import { Table } from "semantic-ui-react";
+import {createElement, Component} from 'react';
+import {Table} from 'semantic-ui-react';
 import autobind from 'autobind-decorator';
 
-@autobind
-class UserList extends Component {
+@autobind class UserList extends Component {
   _renderRow(user) {
-    const { onSelect } = this.props;
+    const {onSelect} = this.props;
     return (
       <Table.Row key={user.id} onClick={() => onSelect(user)}>
         <Table.Cell>{user.firstName}</Table.Cell>
@@ -17,7 +16,7 @@ class UserList extends Component {
     );
   }
   render() {
-    const { users } = this.props;
+    const {users} = this.props;
 
     return (
       <Table celled striped selectable>

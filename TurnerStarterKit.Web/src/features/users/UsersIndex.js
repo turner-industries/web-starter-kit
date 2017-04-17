@@ -1,16 +1,15 @@
 /** @jsx createElement */
-import { createElement, Component } from "react";
-import { NavLink } from "react-router-dom";
-import { Button, Grid, Icon, Form, Message } from "semantic-ui-react";
-import autobind from "autobind-decorator";
+import {createElement, Component} from 'react';
+import {NavLink} from 'react-router-dom';
+import {Button, Grid, Icon, Form, Message} from 'semantic-ui-react';
+import autobind from 'autobind-decorator';
 
-import api from "store/api";
-import Page from "layout/Page";
-import Pagination from "layout/Pagination";
-import UserList from "./UserList";
+import api from 'store/api';
+import Page from 'layout/Page';
+import Pagination from 'layout/Pagination';
+import UserList from './UserList';
 
-@autobind
-class UsersIndex extends Component {
+@autobind class UsersIndex extends Component {
   state = {
     loading: false,
     items: [],
@@ -32,7 +31,7 @@ class UsersIndex extends Component {
   async _loadPage(page) {
     this.setState({loading: true});
 
-    const { search } = this.state;
+    const {search} = this.state;
     const {result} = await api.get('users', {
       pageNumber: page,
       pageSize: 10,
@@ -46,34 +45,34 @@ class UsersIndex extends Component {
   }
 
   _onRowSelect(user) {
-    const { history } = this.props;
+    const {history} = this.props;
     history.push(`/users/${user.id}`);
   }
 
   _reset(e) {
     e.preventDefault();
-    this.setState(
-      () => ({search: ''}),
-      () => this._loadPage(1)
-    );
+    this.setState(() => ({search: ''}), () => this._loadPage(1));
   }
 
   render() {
-    const { loading, items, pageSize, totalItemCount, pageNumber, search } = this.state;
+    const {
+      loading,
+      items,
+      pageSize,
+      totalItemCount,
+      pageNumber,
+      search,
+    } = this.state;
 
     return (
       <Page title="Users" loading={loading}>
-        <Form
-          onSubmit={this._handleSearch}
-        >
+        <Form onSubmit={this._handleSearch}>
           <Grid columns={2}>
             <Grid.Column>
               <Form.Input
                 name="search"
                 value={search}
-                icon={
-                  <Icon onClick={this._reset} name='close' circular link />
-                }
+                icon={<Icon onClick={this._reset} name="close" circular link />}
                 onChange={(e, {name, value}) => this.setState({[name]: value})}
                 placeholder="Search Users..."
                 fluid
@@ -88,19 +87,20 @@ class UsersIndex extends Component {
                 Add New
               </Button>
             </Grid.Column>
-           </Grid>
+          </Grid>
         </Form>
 
         {!!items.length &&
-          <div>
-            <UserList users={items} onSelect={this._onRowSelect} />
-            <Pagination
-              currentPage={pageNumber}
-              pageSize={pageSize}
-              totalCount={totalItemCount}
-              onPageChange={this._loadPage}
-            />
-          </div>}
+          <UserList users={items} onSelect={this._onRowSelect} />}
+
+        {!!items.length &&
+          items.length > pageSize &&
+          <Pagination
+            currentPage={pageNumber}
+            pageSize={pageSize}
+            totalCount={totalItemCount}
+            onPageChange={this._loadPage}
+          />}
 
         {!items.length &&
           !loading &&

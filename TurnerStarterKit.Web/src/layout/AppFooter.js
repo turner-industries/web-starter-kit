@@ -1,5 +1,5 @@
 /** @jsx createElement */
-import { createElement } from 'react';
+import {createElement} from 'react';
 import './footer.scss';
 
 const AppFooter = () => (
@@ -22,9 +22,7 @@ const AppFooter = () => (
             </a>
           </p>
           <p className="text-center">
-            {
-              `© Turner Industries Group, LLC ${new Date().getFullYear()}. All Rights Reserved.`
-            }
+            {`© Turner Industries Group, LLC ${new Date().getFullYear()}. All Rights Reserved.`}
           </p>
         </div>
       </div>

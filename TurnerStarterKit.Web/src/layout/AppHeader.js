@@ -1,63 +1,49 @@
 /** @jsx createElement */
-import { createElement } from "react";
-import { Link, NavLink } from 'react-router-dom';
-import { Icon, Image, Menu } from 'semantic-ui-react';
-import { connect } from 'react-redux';
+import {createElement} from 'react';
+import {withRouter} from 'react-router';
+import {Link, NavLink} from 'react-router-dom';
+import {Icon, Image, Menu} from 'semantic-ui-react';
+import {connect} from 'react-redux';
 import {APP_NAME} from 'constants';
 
 const AppHeader = ({identity}) => (
   <Menu inverted className="main-header" fixed="top">
-    <Menu.Item
-      as={Link}
-      to="/dashboard">
-      <Image
-        src={require('../img/logo-block.png')}
-        width={25}
-        centered />
+    <Menu.Item as={Link} to="/dashboard">
+      <Image src={require('../img/logo-block.png')} width={25} centered />
       <span className="main-header-title">
         {APP_NAME}
       </span>
     </Menu.Item>
 
-    <Menu.Item
-      as={NavLink}
-      to="/dashboard">
+    <Menu.Item as={NavLink} to="/dashboard">
       Dashboard
     </Menu.Item>
 
-    <Menu.Item
-      as={NavLink}
-      to="/users">
+    <Menu.Item as={NavLink} to="/users">
       Users
     </Menu.Item>
 
-    {
-      identity.user &&
-      <Menu.Menu position='right'>
+    {identity.user &&
+      <Menu.Menu position="right">
         <Menu.Item>
           {identity.user.name}
         </Menu.Item>
-      </Menu.Menu>
-    }
+      </Menu.Menu>}
 
-    {
-      !identity.user &&
-      <Menu.Menu position='right'>
-        <Menu.Item
-          as={NavLink}
-          to="/auth/login">
+    {!identity.user &&
+      <Menu.Menu position="right">
+        <Menu.Item as={NavLink} to="/auth/login">
           <Icon name="lock" />
           Log In
         </Menu.Item>
-      </Menu.Menu>
-    }
+      </Menu.Menu>}
   </Menu>
 );
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     identity: state.identity,
   };
 };
 
-export default connect(mapStateToProps)(AppHeader);
+export default withRouter(connect(mapStateToProps)(AppHeader));

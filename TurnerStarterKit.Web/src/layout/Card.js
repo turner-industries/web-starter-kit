@@ -1,16 +1,14 @@
 /** @jsx createElement */
-import { createElement } from "react";
-import { Container, Header } from 'semantic-ui-react';
+import {createElement} from 'react';
+import {Container, Header} from 'semantic-ui-react';
 
 const Card = ({children, title, ...props}) => (
   <div className="card-wrapper">
     <Container className="card-content" {...props}>
-      {
-        !!title &&
+      {!!title &&
         <Header as="h1" className="page-header">
           {title}
-        </Header>
-      }
+        </Header>}
       {children}
     </Container>
   </div>

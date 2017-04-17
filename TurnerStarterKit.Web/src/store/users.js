@@ -59,13 +59,10 @@ const reducer = handleActions(
     [actionCreators.getUsers.resolved]: (state, action) => ({
       ...state,
       keys: action.payload.items.map(x => x.id),
-      entities: action.payload.items.reduce(
-        (acc, entity) => {
-          acc[entity.id] = entity;
-          return acc;
-        },
-        state.entities,
-      ),
+      entities: action.payload.items.reduce((acc, entity) => {
+        acc[entity.id] = entity;
+        return acc;
+      }, state.entities),
       loadingUsers: false,
     }),
     [actionCreators.getUsers.rejected]: (state, action) => ({

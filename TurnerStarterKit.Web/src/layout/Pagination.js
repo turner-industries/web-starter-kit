@@ -1,14 +1,14 @@
 /** @jsx createElement */
-import { createElement, Component } from "react";
-import { Menu } from "semantic-ui-react";
-import paginate from "simple-pagination";
+import {createElement, Component} from 'react';
+import {Menu} from 'semantic-ui-react';
+import paginate from 'simple-pagination';
 
 export default class MenuExamplePagination extends Component {
   render() {
-    const { currentPage, pageSize, totalCount, onPageChange } = this.props;
+    const {currentPage, pageSize, totalCount, onPageChange} = this.props;
 
     const pagination = paginate(totalCount, pageSize, currentPage);
-    const pages = Array.from({ length: pagination.pageCount });
+    const pages = Array.from({length: pagination.pageCount});
 
     // TODO: better boundries
     // const MAX_VISIBLE = 7;

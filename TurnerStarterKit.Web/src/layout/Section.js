@@ -1,6 +1,6 @@
 /** @jsx createElement */
-import { createElement } from "react";
-import { Header, Segment } from "semantic-ui-react";
+import {createElement} from 'react';
+import {Header, Segment} from 'semantic-ui-react';
 
 const Section = ({children, title}) => (
   <div style={{marginBottom: '20px'}}>

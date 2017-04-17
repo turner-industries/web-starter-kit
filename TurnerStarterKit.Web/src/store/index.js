@@ -1,9 +1,21 @@
-if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./configureStore.prod');
-} else {
-  module.exports = require('./configureStore.dev');
+import identity from './identity';
+
+const rootReducer = {
+  identity,
+};
+
+const actions = exportReducerProp('actionCreators');
+const selectors = exportReducerProp('selectors');
+
+function exportReducerProp(propName){
+  return Object.keys(rootReducer).reduce(
+    (result, key) => {
+      result[key] = rootReducer[key][propName];
+      return result;
+    },
+    {}
+  );
 }
 
-const root = require('./root.js');
-module.exports.actions = root.actions;
-module.exports.selectors = root.selectors;
+export {actions, selectors};
+export default rootReducer;

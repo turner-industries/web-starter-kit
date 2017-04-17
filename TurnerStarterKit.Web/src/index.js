@@ -1,21 +1,42 @@
 /** @jsx createElement */
-import { createElement } from "react";
+import {createElement} from 'react';
 import {render} from 'react-dom';
-import { Provider } from 'react-redux';
+import {combineReducers, createStore, applyMiddleware, compose} from 'redux';
+import {Provider} from 'react-redux';
+import {
+  ConnectedRouter,
+  routerReducer,
+  routerMiddleware,
+} from 'react-router-redux';
+import thunk from 'redux-thunk';
+import createHistory from 'history/createBrowserHistory';
 
-import store from './store';
+import reducers from './store';
 import App from './App';
 
 import 'semantic-ui-css/semantic.css';
 import './index.scss';
 
+const history = createHistory();
+const historyMiddleware = routerMiddleware(history);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    router: routerReducer,
+  }),
+  composeEnhancers(applyMiddleware(historyMiddleware, thunk)),
+);
+
 const rootEl = document.getElementById('root');
 
 render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
-  rootEl
+  rootEl,
 );
 
 if (module.hot) {
@@ -23,9 +44,11 @@ if (module.hot) {
     const NextApp = require('./App').default;
     render(
       <Provider store={store}>
-        <NextApp />
+        <ConnectedRouter history={history}>
+          <NextApp />
+        </ConnectedRouter>
       </Provider>,
-      rootEl
+      rootEl,
     );
   });
 }

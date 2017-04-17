@@ -1,6 +1,6 @@
 /** @jsx createElement */
-import { createElement } from "react";
-import { Header, Rating, Table } from 'semantic-ui-react';
+import {createElement} from 'react';
+import {Header, Rating, Table} from 'semantic-ui-react';
 import Card from 'layout/Card';
 import RequiresClaim from 'features/security/RequiresClaim';
 
@@ -8,12 +8,7 @@ const DashboardIndex = () => (
   <div className="flex-wrapper">
     <Section1 />
 
-    <RequiresClaim
-      claim="dashboard/section2"
-      render={
-        () => <Section2 />
-      }
-    />
+    <RequiresClaim claim="dashboard/section2" render={() => <Section2 />} />
   </div>
 );
 
@@ -33,15 +28,15 @@ const Section1 = () => (
       <Table.Body>
         <Table.Row>
           <Table.Cell>
-            <Header as='h2' textAlign='center'>A</Header>
+            <Header as="h2" textAlign="center">A</Header>
           </Table.Cell>
           <Table.Cell singleLine>Power Output</Table.Cell>
           <Table.Cell>
-            <Rating icon='star' defaultRating={3} maxRating={3} />
+            <Rating icon="star" defaultRating={3} maxRating={3} />
           </Table.Cell>
-          <Table.Cell textAlign='right'>
+          <Table.Cell textAlign="right">
             80% <br />
-            <a href='#'>18 studies</a>
+            <a href="#">18 studies</a>
           </Table.Cell>
           <Table.Cell>
             Creatine supplementation is the reference compound for increasing muscular creatine levels; there is
@@ -50,15 +45,15 @@ const Section1 = () => (
         </Table.Row>
         <Table.Row>
           <Table.Cell>
-            <Header as='h2' textAlign='center'>A</Header>
+            <Header as="h2" textAlign="center">A</Header>
           </Table.Cell>
           <Table.Cell singleLine>Weight</Table.Cell>
           <Table.Cell>
-            <Rating icon='star' defaultRating={3} maxRating={3} />
+            <Rating icon="star" defaultRating={3} maxRating={3} />
           </Table.Cell>
-          <Table.Cell textAlign='right'>
+          <Table.Cell textAlign="right">
             100% <br />
-            <a href='#'>65 studies</a>
+            <a href="#">65 studies</a>
           </Table.Cell>
           <Table.Cell>
             Creatine is the reference compound for power improvement, with numbers from one meta-analysis to assess

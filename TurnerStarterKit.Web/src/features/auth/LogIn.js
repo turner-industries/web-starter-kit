@@ -1,20 +1,24 @@
 /** @jsx createElement */
-import { createElement, Component } from 'react';
-import { Container, Header, Segment } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
-import { Redirect } from 'react-router-dom';
+import {createElement, Component} from 'react';
+import {Container, Header, Segment} from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {Redirect} from 'react-router-dom';
 
 import {APP_NAME} from 'constants';
-import { actions } from 'store';
+import {actions} from 'store';
 import AppFooter from 'layout/AppFooter';
 
 export class LogIn extends Component {
-  componentWillMount(){
+  componentWillMount() {
     this.props.login();
   }
-  render(){
-    const {identity} = this.props;
+  render() {
+    const {identity, state} = this.props;
+
+    const pathname = state.from && state.from.pathname
+      ? state.from.pathname
+      : '/';
 
     return (
       <Container text>
@@ -22,27 +26,27 @@ export class LogIn extends Component {
           <Header textAlign="center" attached="top" inverted>
             Welcome to {APP_NAME}
           </Header>
-          <Segment attached style={{
-            paddingTop: '20px',
-            marginBottom: '20px',
-          }}
-          loading={identity.loginLoading}>
+          <Segment
+            attached
+            style={{
+              paddingTop: '20px',
+              marginBottom: '20px',
+            }}
+            loading={identity.loginLoading}
+          >
             Logging in...
           </Segment>
         </div>
-        <AppFooter></AppFooter>
-        {
-          identity.user &&
-          <Redirect to="/dashboard" />
-        }
+        <AppFooter />
+        {identity.user && <Redirect to={pathname} />}
       </Container>
     );
   }
 }
 
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   identity: state.identity,
+  state: state.router.location.state,
 });
 
 const mapDispatchToProps = dispatch =>

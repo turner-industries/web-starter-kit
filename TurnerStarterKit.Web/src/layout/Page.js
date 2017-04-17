@@ -1,6 +1,6 @@
 /** @jsx createElement */
-import { createElement } from "react";
-import { Container, Dimmer, Loader, Header } from 'semantic-ui-react';
+import {createElement} from 'react';
+import {Container, Dimmer, Loader, Header} from 'semantic-ui-react';
 
 const Page = ({children, metaContent, title, ...props}) => {
   const loading = props.loading;
@@ -12,21 +12,17 @@ const Page = ({children, metaContent, title, ...props}) => {
       className="page-content"
       {...props}
     >
-      {
-        !!title &&
+      {!!title &&
         <Header as="h1" className="page-header">
           {title}
-        </Header>
-      }
+        </Header>}
 
-      {
-        !!metaContent &&
+      {!!metaContent &&
         <div className="meta-content-container">
           <Container>
             {metaContent}
           </Container>
-        </div>
-      }
+        </div>}
 
       {children}
 
