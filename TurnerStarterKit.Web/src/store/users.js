@@ -36,7 +36,7 @@ const actionCreators = {
 const initialState = {
   keys: [],
   entities: {},
-  loadingUsers: false,
+  loading: false,
 };
 
 const selectors = {
@@ -54,7 +54,7 @@ const reducer = handleActions(
   {
     [actionCreators.getUsers.requested]: (state, action) => ({
       ...state,
-      loadingUsers: true,
+      loading: true,
     }),
     [actionCreators.getUsers.resolved]: (state, action) => ({
       ...state,
@@ -63,15 +63,15 @@ const reducer = handleActions(
         acc[entity.id] = entity;
         return acc;
       }, state.entities),
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.getUsers.rejected]: (state, action) => ({
       ...state,
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.getUser.requested]: (state, action) => ({
       ...state,
-      loadingUsers: true,
+      loading: true,
     }),
     [actionCreators.getUser.resolved]: (state, action) => ({
       ...state,
@@ -79,15 +79,15 @@ const reducer = handleActions(
         ...state.entities,
         [action.payload.id]: action.payload,
       },
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.getUser.rejected]: (state, action) => ({
       ...state,
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.addUser.requested]: (state, action) => ({
       ...state,
-      loadingUsers: true,
+      loading: true,
     }),
     [actionCreators.addUser.resolved]: (state, action) => ({
       ...state,
@@ -100,15 +100,15 @@ const reducer = handleActions(
       //   },
       //   state.entities,
       // ),
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.addUser.rejected]: (state, action) => ({
       ...state,
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.editUser.requested]: (state, action) => ({
       ...state,
-      loadingUsers: true,
+      loading: true,
     }),
     [actionCreators.editUser.resolved]: (state, action) => ({
       ...state,
@@ -117,11 +117,11 @@ const reducer = handleActions(
       //   ...state.entities,
       //   [action.payload.id]: action.payload,
       // },
-      loadingUsers: false,
+      loading: false,
     }),
     [actionCreators.editUser.rejected]: (state, action) => ({
       ...state,
-      loadingUsers: false,
+      loading: false,
     }),
   },
   initialState,
