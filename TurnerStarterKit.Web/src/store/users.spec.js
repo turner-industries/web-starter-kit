@@ -1,7 +1,7 @@
 import reducer from './users';
 
-const {getUsers, getUser, addUser, editUser} = reducer.actionCreators;
-const {mappedKeys, getById} = reducer.selectors;
+const {getUsers, getUser, addUser, editUser} = reducer.actionCreators; // eslint-disable-line
+const {mappedKeys, getById} = reducer.selectors; // eslint-disable-line
 
 describe('users reducer', () => {
   it(getUsers.requested, () => {
