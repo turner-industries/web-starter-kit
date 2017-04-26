@@ -1,5 +1,5 @@
 import Card from './Card';
-import * as React from 'react';
+import React from 'react';
 import {create} from 'react-test-renderer';
 
 describe('component', () => {

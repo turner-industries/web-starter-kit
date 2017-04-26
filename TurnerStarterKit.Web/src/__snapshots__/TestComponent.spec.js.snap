@@ -1,0 +1,5 @@
+exports[`test component sample test 1`] = `
+<div>
+  foo
+</div>
+`;
