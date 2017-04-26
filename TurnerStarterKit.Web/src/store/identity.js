@@ -1,12 +1,20 @@
 import {handleActions} from 'redux-actions';
 import {thunkCreator} from './util';
 
-const fakeUser = {
-  user: {
-    firstName: 'Justin',
-    lastName: 'Obney',
-    username: 'justinobney',
-    claims: ['dashboard/view', 'users/modify'],
+const initialState = {
+  user: null,
+  loading: false,
+};
+
+const selectors = {
+  destructureUserFromClaims: user => {
+    const {claims, ...rest} = user;
+    return {
+      user: {
+        ...rest,
+      },
+      claims,
+    };
   },
 };
 
@@ -14,36 +22,40 @@ const actionCreators = {
   login: thunkCreator({
     async promise() {
       return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(fakeUser), 1000);
+        setTimeout(
+          () =>
+            resolve({
+              firstName: 'Justin',
+              lastName: 'Obney',
+              username: 'justinobney',
+              claims: ['dashboard/view', 'users/modify'],
+            }),
+          1000
+        );
       });
     },
     type: 'LOGIN',
   }),
 };
 
-const initialState = {
-  user: null,
-  loginLoading: false,
+const handlers = {
+  [actionCreators.login.requested]: (state, action) => ({
+    ...state,
+    loading: true,
+  }),
+  [actionCreators.login.resolved]: (state, action) => ({
+    ...state,
+    ...selectors.destructureUserFromClaims(action.payload),
+    loading: false,
+  }),
+  [actionCreators.login.rejected]: (state, action) => ({
+    ...state,
+    error: action.error,
+    loading: false,
+  }),
 };
 
-const reducer = handleActions(
-  {
-    [actionCreators.login.requested]: (state, action) => ({
-      ...state,
-      loginLoading: true,
-    }),
-    [actionCreators.login.resolved]: (state, action) => ({
-      ...state,
-      ...action.payload,
-      loginLoading: false,
-    }),
-    [actionCreators.login.rejected]: (state, action) => ({
-      ...state,
-      loginLoading: false,
-    }),
-  },
-  initialState,
-);
+const reducer = handleActions(handlers, initialState);
 reducer.actionCreators = actionCreators;
 
 export default reducer;
