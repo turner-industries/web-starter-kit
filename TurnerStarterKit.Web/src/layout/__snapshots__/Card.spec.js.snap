@@ -1,0 +1,23 @@
+exports[`component should allow skipping children 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`component should render with title and children 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    <h1
+      className="ui header page-header">
+      Title
+    </h1>
+    Content
+  </div>
+</div>
+`;
