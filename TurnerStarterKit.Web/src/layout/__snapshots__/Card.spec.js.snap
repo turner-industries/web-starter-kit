@@ -1,0 +1,101 @@
+exports[`Component should allow skipping title 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`Component should render with title and children 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    <h1
+      className="ui header page-header">
+      Title
+    </h1>
+    Content
+  </div>
+</div>
+`;
+
+exports[`Component: Card should allow skipping title 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`Component: Card should render with title and children 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    <h1
+      className="ui header page-header">
+      Title
+    </h1>
+    Content
+  </div>
+</div>
+`;
+
+exports[`component should allow skipping children 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`component should allow skipping title 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`component should allow skipping title 2`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`component should pass extra props to the wrapping container 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    Content
+  </div>
+</div>
+`;
+
+exports[`component should render with title and children 1`] = `
+<div
+  className="card-wrapper">
+  <div
+    className="ui container card-content">
+    <h1
+      className="ui header page-header">
+      Title
+    </h1>
+    Content
+  </div>
+</div>
+`;
